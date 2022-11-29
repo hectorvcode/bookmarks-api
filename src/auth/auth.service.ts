@@ -4,12 +4,12 @@ import { AuthDto } from './dto';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
-import { PrismaModuleService } from '../prisma-module/prisma-module.service';
+import { PrismaService } from '../prisma/prisma.service';
 
 @Injectable()
 export class AuthService {
   constructor(
-    private prisma: PrismaModuleService,
+    private prisma: PrismaService,
     private jwt: JwtService,
     private config: ConfigService,
   ) {}

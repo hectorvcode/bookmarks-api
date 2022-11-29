@@ -3,7 +3,7 @@ import { ConfigService } from '@nestjs/config';
 import { PrismaClient } from '@prisma/client';
 
 @Injectable()
-export class PrismaModuleService extends PrismaClient {
+export class PrismaService extends PrismaClient {
   constructor(config: ConfigService) {
     super({
       datasources: {
@@ -16,8 +16,8 @@ export class PrismaModuleService extends PrismaClient {
 
   cleanDb() {
     return this.$transaction([
-      this.user.deleteMany(),
       this.bookmark.deleteMany(),
+      this.user.deleteMany(),
     ]);
   }
 }
